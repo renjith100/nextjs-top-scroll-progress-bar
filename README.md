@@ -10,6 +10,8 @@ A lightweight Next.js component that adds a customizable scroll progress bar at 
 - **Zero dependencies**
 - **TypeScript support**
 
+See [CHANGELOG.md](./CHANGELOG.md) for release history and updates.
+
 ## Installation
 
 ```bash
@@ -118,6 +120,67 @@ The component accepts the following props:
 // Using RGB color
 <ClientTopScrollProgressBar color="rgb(0, 128, 255)" height={3} />
 ```
+
+## Development
+
+### Project Structure
+
+```
+├── src/                    # Source code
+│   ├── TopScrollProgressBar.tsx  # Main component
+│   └── index.ts           # Entry point
+├── dist/                   # Built files (generated)
+├── __tests__/             # Test files
+└── package.json           # Project configuration
+```
+
+### Setup Development Environment
+
+1. Clone the repository:
+```bash
+git clone https://github.com/renjith100/nextjs-top-scroll-progress-bar.git
+cd nextjs-top-scroll-progress-bar
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Start development:
+```bash
+npm run build # Build the package
+```
+
+### Running Tests
+
+The project uses Jest and React Testing Library for testing. Tests are located in the `src/__tests__` directory.
+
+```bash
+# Run tests once
+npm test
+
+# Run tests in watch mode (for development)
+npm run test:watch
+```
+
+The test suite includes:
+- Component rendering tests
+- Props validation tests
+- Scroll behavior tests
+
+### Building
+
+The package uses Rollup for building and generates both ESM and CommonJS formats:
+
+```bash
+npm run build
+```
+
+This will create:
+- `dist/index.cjs.js` - CommonJS format
+- `dist/index.esm.js` - ES Module format
+- `dist/index.d.ts` - TypeScript declarations
 
 ## License
 
