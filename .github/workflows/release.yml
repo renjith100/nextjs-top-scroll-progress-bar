@@ -1,6 +1,7 @@
 name: Release and Publish Package
 
 on:
+  workflow_dispatch:
   release:
     types: [published]
 
