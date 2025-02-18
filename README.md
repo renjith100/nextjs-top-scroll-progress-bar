@@ -10,6 +10,8 @@ A lightweight Next.js component that adds a customizable scroll progress bar at 
 - **Zero dependencies**
 - **TypeScript support**
 
+See [CHANGELOG.md](./CHANGELOG.md) for release history and updates.
+
 ## Installation
 
 ```bash
