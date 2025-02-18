@@ -152,6 +152,37 @@ npm install
 npm run build # Build the package
 ```
 
+### Testing with a Local Next.js Project
+
+To test the package locally before publishing:
+
+1. In your package directory, create a local package:
+```bash
+npm pack
+```
+This will create a file like `nextjs-top-scroll-progress-bar-0.0.2.tgz`
+
+2. In your Next.js project's `package.json`, add the local package:
+```json
+{
+  "dependencies": {
+    "nextjs-top-scroll-progress-bar": "file:/path/to/nextjs-top-scroll-progress-bar-0.0.2.tgz"
+  }
+}
+```
+
+3. Install the package in your Next.js project:
+```bash
+npm install
+```
+
+4. Use the component as described in the Usage section above.
+
+Whenever you make changes to the package:
+1. Rebuild the package: `npm run build`
+2. Create a new package: `npm pack`
+3. Reinstall in your Next.js project: `npm install`
+
 ### Running Tests
 
 The project uses Jest and React Testing Library for testing. Tests are located in the `src/__tests__` directory.
