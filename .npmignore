@@ -1,0 +1,9 @@
+.vscode
+.git
+node_modules
+src
+rollup.config.js
+tsconfig.json
+.gitignore
+*.map
+dist/dist
