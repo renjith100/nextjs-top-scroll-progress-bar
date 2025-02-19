@@ -10,13 +10,11 @@ export default {
       file: 'dist/index.cjs.js',
       format: 'cjs',
       exports: 'named',
-      sourcemap: true,
     },
     {
       file: 'dist/index.esm.js',
       format: 'esm',
       exports: 'named',
-      sourcemap: true,
     },
   ],
   plugins: [
@@ -27,7 +25,8 @@ export default {
       tsconfig: './tsconfig.json',
       declaration: true,
       declarationDir: 'dist',
-      jsx: 'react',
+      jsx: 'react-jsx',
+      exclude: ['**/__tests__/**', '**/*.test.ts', '**/*.test.tsx'],
     }),
   ],
   external: ['react', 'react-dom'],
