@@ -13,19 +13,37 @@ const TopScrollProgressBar = ({
 
   useEffect(() => {
     const updateScrollProgress = () => {
-      const currentScroll = window.scrollY;
-      const pageHeight = document.documentElement.scrollHeight;
-      const windowHeight = document.documentElement.clientHeight;
+      // Get scroll position, handle different browser implementations
+      const currentScroll = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
+      
+      // Get the total scrollable height, accounting for different browser implementations
+      const docElement = document.documentElement;
+      const docBody = document.body;
+      const pageHeight = Math.max(
+        docBody.scrollHeight,
+        docBody.offsetHeight,
+        docElement.clientHeight,
+        docElement.scrollHeight,
+        docElement.offsetHeight
+      );
+      const windowHeight = window.innerHeight || docElement.clientHeight || docBody.clientHeight;
       const scrollableHeight = pageHeight - windowHeight;
       
-      const progressPercentage = (currentScroll / scrollableHeight) * 100;
+      // Calculate progress percentage, ensuring it's between 0 and 100
+      const progressPercentage = Math.min(100, Math.max(0, (currentScroll / scrollableHeight) * 100)) || 0;
       setScrollProgress(progressPercentage);
     };
 
-    // Update progress when page loads and on scroll
+    // Initial update and add event listeners
     updateScrollProgress();
-    window.addEventListener("scroll", updateScrollProgress);
-    return () => window.removeEventListener("scroll", updateScrollProgress);
+    window.addEventListener('scroll', updateScrollProgress);
+    window.addEventListener('resize', updateScrollProgress);
+
+    return () => {
+      // Remove event listeners on cleanup
+      window.removeEventListener('scroll', updateScrollProgress);
+      window.removeEventListener('resize', updateScrollProgress);
+    };
   }, []);
 
   return (
