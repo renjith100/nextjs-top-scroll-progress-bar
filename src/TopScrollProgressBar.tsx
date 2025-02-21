@@ -1,5 +1,4 @@
-import React, { useEffect, useState, JSX } from "react";
-
+import React, { useEffect, useState } from "react";
 
 export interface TopScrollProgressBarProps {
   height?: number;
@@ -9,19 +8,24 @@ export interface TopScrollProgressBarProps {
 const TopScrollProgressBar = ({
   height = 4,
   color = "#FF0000"
-}: TopScrollProgressBarProps): JSX.Element => {
-  const [progress, setProgress] = useState(0);
+}: TopScrollProgressBarProps) => {
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      const scrollHeight =
-        document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      setProgress((scrollTop / scrollHeight) * 100);
+    const updateScrollProgress = () => {
+      const currentScroll = window.scrollY;
+      const pageHeight = document.documentElement.scrollHeight;
+      const windowHeight = document.documentElement.clientHeight;
+      const scrollableHeight = pageHeight - windowHeight;
+      
+      const progressPercentage = (currentScroll / scrollableHeight) * 100;
+      setScrollProgress(progressPercentage);
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    // Update progress when page loads and on scroll
+    updateScrollProgress();
+    window.addEventListener("scroll", updateScrollProgress);
+    return () => window.removeEventListener("scroll", updateScrollProgress);
   }, []);
 
   return (
@@ -30,7 +34,7 @@ const TopScrollProgressBar = ({
         position: "fixed",
         top: 0,
         left: 0,
-        width: `${progress}%`,
+        width: `${scrollProgress}%`,
         height: `${height}px`,
         backgroundColor: color,
         transition: "width 0.2s ease-out",
