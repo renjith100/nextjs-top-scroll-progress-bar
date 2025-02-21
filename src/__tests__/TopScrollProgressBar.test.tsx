@@ -6,18 +6,48 @@ import '@testing-library/jest-dom';
 
 describe('TopScrollProgressBar', () => {
   beforeEach(() => {
-    // Mock window properties
+    // Mock window properties for scroll position
     Object.defineProperty(window, 'scrollY', {
       value: 0,
       writable: true
     });
+    Object.defineProperty(document.documentElement, 'scrollTop', {
+      value: 0,
+      writable: true
+    });
+    Object.defineProperty(document.body, 'scrollTop', {
+      value: 0,
+      writable: true
+    });
     
+    // Mock document dimensions
     Object.defineProperty(document.documentElement, 'scrollHeight', {
       value: 1000,
       writable: true
     });
+    Object.defineProperty(document.body, 'scrollHeight', {
+      value: 1000,
+      writable: true
+    });
+    Object.defineProperty(document.documentElement, 'offsetHeight', {
+      value: 1000,
+      writable: true
+    });
+    Object.defineProperty(document.body, 'offsetHeight', {
+      value: 1000,
+      writable: true
+    });
     
+    // Mock viewport dimensions
+    Object.defineProperty(window, 'innerHeight', {
+      value: 800,
+      writable: true
+    });
     Object.defineProperty(document.documentElement, 'clientHeight', {
+      value: 800,
+      writable: true
+    });
+    Object.defineProperty(document.body, 'clientHeight', {
       value: 800,
       writable: true
     });
@@ -57,6 +87,8 @@ describe('TopScrollProgressBar', () => {
     
     // Simulate 50% scroll
     Object.defineProperty(window, 'scrollY', { value: 100 });
+    Object.defineProperty(document.documentElement, 'scrollTop', { value: 100 });
+    Object.defineProperty(document.body, 'scrollTop', { value: 100 });
     fireEvent.scroll(window);
     
     expect(progressBar).toHaveStyle({ width: '50%' });
