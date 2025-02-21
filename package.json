@@ -1,6 +1,6 @@
 {
   "name": "nextjs-top-scroll-progress-bar",
-  "version": "0.0.4",
+  "version": "0.0.8",
   "description": "A Next.js npm package that adds a top scroll progress bar to your Next.js apps, compatible with both Pages Router and App Router.",
   "homepage": "https://github.com/renjith100/nextjs-top-scroll-progress-bar",
   "repository": {
