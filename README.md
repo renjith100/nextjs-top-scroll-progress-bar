@@ -30,17 +30,17 @@ The component can be used with both the App Router (Next.js 13+) and the Pages R
 
 ```tsx
 // app/layout.tsx
-import { TopScrollProgressBar } from 'nextjs-top-scroll-progress-bar'
+import { TopScrollProgressBar } from 'nextjs-top-scroll-progress-bar';
 
 export default function RootLayout({ children }) {
-  return (
-    <html>
-      <body>
-        <TopScrollProgressBar color="#F00" height={4} />
-        {children}
-      </body>
-    </html>
-  )
+    return (
+        <html>
+            <body>
+                <TopScrollProgressBar color='#F00' height={4} />
+                {children}
+            </body>
+        </html>
+    );
 }
 ```
 
@@ -48,16 +48,16 @@ export default function RootLayout({ children }) {
 
 ```tsx
 // pages/_app.tsx
-import type { AppProps } from 'next/app'
-import { TopScrollProgressBar } from 'nextjs-top-scroll-progress-bar'
+import type { AppProps } from 'next/app';
+import { TopScrollProgressBar } from 'nextjs-top-scroll-progress-bar';
 
 export default function App({ Component, pageProps }: AppProps) {
-  return (
-    <>
-      <TopScrollProgressBar color="#F00" height={4} />
-      <Component {...pageProps} />
-    </>
-  )
+    return (
+        <>
+            <TopScrollProgressBar color='#F00' height={4} />
+            <Component {...pageProps} />
+        </>
+    );
 }
 ```
 
@@ -65,10 +65,10 @@ export default function App({ Component, pageProps }: AppProps) {
 
 The component accepts the following props:
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `color` | `string` | `'#FF0000'` | Color of the progress bar. Accepts any valid CSS color value (hex, rgb, hsl, etc.) |
-| `height` | `number` | `4` | Height of the progress bar in pixels |
+| Prop     | Type     | Default     | Description                                                                        |
+| -------- | -------- | ----------- | ---------------------------------------------------------------------------------- |
+| `color`  | `string` | `'#FF0000'` | Color of the progress bar. Accepts any valid CSS color value (hex, rgb, hsl, etc.) |
+| `height` | `number` | `4`         | Height of the progress bar in pixels                                               |
 
 ## Examples
 
@@ -99,17 +99,20 @@ The component accepts the following props:
 ### Setup Development Environment
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/renjith100/nextjs-top-scroll-progress-bar.git
 cd nextjs-top-scroll-progress-bar
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
 3. Start development:
+
 ```bash
 npm run build # Build the package
 ```
@@ -119,21 +122,25 @@ npm run build # Build the package
 To test the package locally before publishing:
 
 1. In your package directory, create a local package:
+
 ```bash
 npm pack
 ```
-This will create a file like `nextjs-top-scroll-progress-bar-0.0.2.tgz`
+
+This will create a file like `nextjs-top-scroll-progress-bar-x.x.x.tgz`
 
 2. In your Next.js project's `package.json`, add the local package:
+
 ```json
 {
-  "dependencies": {
-    "nextjs-top-scroll-progress-bar": "file:/path/to/nextjs-top-scroll-progress-bar-0.0.2.tgz"
-  }
+    "dependencies": {
+        "nextjs-top-scroll-progress-bar": "file:/path/to/nextjs-top-scroll-progress-bar-x.x.x.tgz"
+    }
 }
 ```
 
 3. Install the package in your Next.js project:
+
 ```bash
 npm install
 ```
@@ -141,6 +148,7 @@ npm install
 4. Use the component as described in the Usage section above.
 
 Whenever you make changes to the package:
+
 1. Rebuild the package: `npm run build`
 2. Create a new package: `npm pack`
 3. Reinstall in your Next.js project: `npm install`
@@ -158,6 +166,7 @@ npm run test:watch
 ```
 
 The test suite includes:
+
 - Component rendering tests
 - Props validation tests
 - Scroll behavior tests
@@ -171,6 +180,7 @@ npm run build
 ```
 
 This will create:
+
 - `dist/index.cjs.js` - CommonJS format
 - `dist/index.esm.js` - ES Module format
 - `dist/index.d.ts` - TypeScript declarations
@@ -178,4 +188,3 @@ This will create:
 ## License
 
 MIT
-
