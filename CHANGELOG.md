@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.0] - 2026-03-09
+
+### Changed
+- Added `'use client'` directive — no wrapper component needed for App Router
+- Simplified usage documentation
+
+### Fixed
+- Progress bar now shows correct position when page loads already scrolled
+- Fixed potential division by zero on pages with no scrollable content
+
 ## [0.0.4] - 2025-02-19
  - Corrected GitHub workflow
  - Updated build

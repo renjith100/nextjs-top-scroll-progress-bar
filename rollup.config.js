@@ -10,11 +10,13 @@ export default {
       file: 'dist/index.cjs.js',
       format: 'cjs',
       exports: 'named',
+      banner: "'use client';",
     },
     {
       file: 'dist/index.esm.js',
       format: 'esm',
       exports: 'named',
+      banner: "'use client';",
     },
   ],
   plugins: [
