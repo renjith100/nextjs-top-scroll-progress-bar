@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useEffect, useState, JSX } from "react";
 
 
@@ -17,9 +19,16 @@ const TopScrollProgressBar = ({
       const scrollTop = window.scrollY;
       const scrollHeight =
         document.documentElement.scrollHeight - document.documentElement.clientHeight;
+
+      if (scrollHeight === 0) {
+        setProgress(0);
+        return;
+      }
+
       setProgress((scrollTop / scrollHeight) * 100);
     };
 
+    handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
